@@ -12,5 +12,5 @@ jobs:
           node-version: '26'
       - name: Install dependencies
         run: npm install
-      - name: Build project
-        run: npm run build
+      - name: Start project
+        run: npm run start
