@@ -1,0 +1,17 @@
+services:
+  web:
+    image: mon_app_web_image    # nom de l'image créée
+    build: .    # Construis l'image à partir du Dockerfile situé dans le répertoire courant. 
+    ports:
+      - "5001:5000" # PORT_HOTE:PORT_CONTENEUR
+    depends_on:     # Démarre db et redis avant web.
+      - db
+      - redis
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: monapp_db
+  redis:
+    image: redis:6
